@@ -1,0 +1,42 @@
+//////////////////////////////////////////////////////////////////////////////
+// Tycho Game Library
+// Copyright (C) 2008 Martin Slater
+// Created : Sunday, 7 December 2008 10:04:15 PM
+//////////////////////////////////////////////////////////////////////////////
+#if _MSC_VER > 1000
+#pragma once
+#endif  // _MSC_VER
+
+#ifndef __BUILTIN_TYPE_H_EB413954_FDD5_4937_AEA5_D2F9F6407DE5_
+#define __BUILTIN_TYPE_H_EB413954_FDD5_4937_AEA5_D2F9F6407DE5_
+
+//////////////////////////////////////////////////////////////////////////////
+// INCLUDES
+//////////////////////////////////////////////////////////////////////////////
+#include "glass/glass_abi.h"
+#include "glass/base_type.h"
+
+//////////////////////////////////////////////////////////////////////////////
+// CLASS
+//////////////////////////////////////////////////////////////////////////////
+
+namespace tycho
+{
+namespace glass
+{
+
+    class TYCHO_GLASS_ABI builtin_type : public base_type
+    {
+    public:
+		/// constructor
+		builtin_type(const std::string& name, const base_type::type_t t);
+		
+    private:
+    
+    };
+        
+
+} // end namespace
+} // end namespace
+
+#endif // __BUILTIN_TYPE_H_EB413954_FDD5_4937_AEA5_D2F9F6407DE5_

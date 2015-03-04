@@ -1,0 +1,40 @@
+ template<!return_type_def!class U!args_def!>
+struct member_function_thunk_!count! : member_function_thunk_base
+{
+	typedef !return_type! (U::*mem_fun)(!args!);
+		
+	member_function_thunk_!count!(mem_fun func) : m_mem_fun(func) {}				
+	
+	virtual void call(void* obj_ptr, const argument_list& args, const argument& result) const
+	{
+		U& obj = *((U*)obj_ptr);
+#ifndef TY_VOID_TYPE 
+		if(result.get_ptr())
+		{
+			R& res = *((R*)result.get_ptr());
+			res = (obj.*m_mem_fun)(!cast_args!);
+		}
+		else
+			(obj.*m_mem_fun)(!cast_args!);
+#else			
+		(obj.*m_mem_fun)(!cast_args!);
+#endif		
+		
+	}	
+	
+private:
+	mem_fun m_mem_fun;		
+};
+
+
+template<!return_type_def!class U!args_def!>
+inline member_function_type* make_member_function_type(!return_type! (U::*func)(!args!), int flags)
+{
+	member_function_type* nt = new member_function_type(glass::make_default_name("$mft"), flags);
+	nt->set_class_type(core::debug_checked_cast<const class_type*>(static_type_info<U>()));		
+	!add_params!
+	nt->set_call_thunk(new detail::member_function_thunk_!count!<!return_type_thunk!U!comma_args!>(func));
+	!set_return_type!
+	return nt;
+}
+
