@@ -46,7 +46,7 @@ namespace glass
 		
 		/// \returns the number of arguments the parameters takes
 		int get_num_parameter() const
-			{ return m_parameters.size(); }
+			{ return static_cast<int>(m_parameters.size()); }
 
 	private:		
 		const base_type*  m_return_type;

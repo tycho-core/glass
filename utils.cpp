@@ -39,7 +39,7 @@ namespace utils
 			return core::strlen(start);
 		if(*end == 0 || *(end+1) != ':')
 			return 0; // invalid name
-		return end - start;
+		return static_cast<int>(end - start);
 	}
 
     //--------------------------------------------------------------------

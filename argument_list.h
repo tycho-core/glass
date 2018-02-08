@@ -41,7 +41,7 @@ namespace glass
     
 		/// \returns The number of arguments in the list
 		int size() const 
-			{ return m_arguments.size(); }
+			{ return static_cast<int>(m_arguments.size()); }
 			
 		/// \returns The i'th argument in the list
 		const argument& get_argument(int i) const {
